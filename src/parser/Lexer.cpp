@@ -129,8 +129,10 @@ enum states {
 };
 
 #define MATCH(c) \
-	if(peek==c) \
+	if(peek==c) { \
 		state+=NUM_STATES; \
+		return PUSH; \
+	} \
 	else if(is_whitespace(peek)) \
 		return IDENTIFIER; \
 	else { \
